@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+<link rel="stylesheet" href="./fonts/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .gallery {
+    --s: 24vw; /* control the size */
+    --g: 2vw;  /* control the gap */
+    display: grid;
+    margin: calc(var(--s) + var(--g));
+    place-content: center;
+    
+  }
+  .gallery > label{
+    grid-area: 1/1;
+    aspect-ratio: 0.866;
+    display: flex;
+    clip-path: polygon(0% 25%,0% 75%,50% 100%,100% 75%,100% 25%,50% 0);
+    transform: translate(var(--_x,0),var(--_y,0)) scale(var(--_t,1));
+    cursor: pointer;
+    filter: grayscale(80%);
+    transition: .2s linear;
+  }
+  .gallery > label > img {
+    width: 100%; /* Ensure the image takes the full width of the <a> tag */
+    height: 100%;
+    object-fit: cover;
+    
+  }
+  .gallery > label:hover {
+    filter: grayscale(0);
+    z-index: 1;
+    --_t: 1.2;
+    
+  }
+  .gallery > label > img:hover {
+    filter: grayscale(0);
+    z-index: 1;
+    --_t: 1.2;
+  }
+  
+  .gallery > label:nth-child(1) {--_x: calc(-100% - var(--g))}
+  .gallery > label:nth-child(7) {--_x: calc( 100% + var(--g))}
+  .gallery > label:nth-child(8) {--_y: calc(-75% - .87*var(--g))}
+  .gallery > label:nth-child(3),
+  .gallery > label:nth-child(5) {--_y: calc(-75% - .87*var(--g))}
+  .gallery > label:nth-child(9) {--_y: calc(75% + .87*var(--g))}
+  .gallery > label:nth-child(4),
+  .gallery > label:nth-child(6) {--_y: calc( 75% + .87*var(--g))}
+  .gallery > label:nth-child(8) {--_x: calc(-154% - var(--g))}
+  .gallery > label:nth-child(3),
+  .gallery > label:nth-child(4) {--_x: calc(-50% - .5*var(--g))}
+  .gallery > label:nth-child(9) {--_x: calc(-154% - var(--g))}
+  .gallery > label:nth-child(5), 
+  .gallery > label:nth-child(6) {--_x: calc( 50% + .5*var(--g))}
+      </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#1c2334] text-white md:text-sm select-none">
+    <div
+    class="w-full h-fit bg-[url('https://images.unsplash.com/photo-1607798748738-b15c40d33d57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHwxMXx8Y29kZXxlbnwwfDB8fHwxNzMyNzk1MjA5fDA&ixlib=rb-4.0.3&q=80&w=1080')] bg-cover bg-center bg-no-repeat">
+    <div id="navbar" class="text-end py-3 hidden pr-5 md:block md:top-0 md:fixed bg-[#181c26] w-[100%] z-10">
+        <a href="#home" class="px-4 py-2 hover:text-[#f1c372]">Home</a>
+        <a href="#about" class="px-4 py-2 hover:text-[#f1c372]">About</a>
+        <a href="#portfolio" class="px-4 py-2 hover:text-[#f1c372]">Portfolio</a>
+        <a href="#contact" class="px-4 py-2 hover:text-[#f1c372]">Contact</a>
+    </div>
+
+    <div class="my-4 mx-3 fixed z-10 cursor-pointer" onclick="openMenu()">
+        <i class="fa fa-bars inline md:hidden lg:hidden mx-2 text-2xl text-white bg-[#222c44]/45 px-3.5 py-1.5 rounded-md" 
+        aria-hidden="true"></i>
+       </div>
+       <div class="hidden bg-[#181c26] fixed z-20 top-0 h-[100%] pb-11 transition-opacity ease-in-out duration-500" id="menubar">
+        <ul class="divide-y divide-[#1c2334] text-white font-light text-base space-y-2">
+            <button class="pl-4 pt-2 pr-28" onclick="closeMenu()">Close<i class="fa fa-times mx-2" aria-hidden="true"></i></button>
+            <li class="pl-4 pt-2"><a href="#home" class="py-2 hover:text-[#f1c372]">Home</a></li>
+            <li class="pl-4 pt-2"><a href="#about" class="py-2 hover:text-[#f1c372]">About</a></li>
+            <li class="pl-4 pt-2"><a href="#portfolio" class="py-2 hover:text-[#f1c372]">Portfolio</a></li>
+            <li class="pl-4 pt-2"><a href="#contact" class="py-2 hover:text-[#f1c372]">Contact</a></li>
+        </ul>
+       </div>
+
+       <div class="w-full h-full relative top-10 pb-20">
+        <div class="lg:px-16 px-8 flex sm:flex-row flex-col flex-col-reverse gap-6 justify-center items-center">
+            <div class="sm:text-left text-center text-white">
+                <h4 class="sm:text-2xl text-3xl font-semibold w-fit bg-gray-900/40 p-3">Hello, My name is
+                    <span class="text-green-500 sm:text-2xl text-xl font-serif">Shreyash Jadhav</span>
+                </h4>
+                <h1 class="mt-4 sm:text-4xl text-2xl">I'm
+                    <span class="typing libre-baskerville-bold text-green-500"></span>
+                </h1>
+
+                <p class="mt-4 text-lg capitalize">Fresher full-stack developer
+                    Fresher
+                    Skills in HTML,CSS,js, Core, Android, and some Flutter experience.</p>
+                <div class=" mt-6 flex sm:flex-row flex-col gap-4 sm:justify-start justify-center">
+                    <button class="p-2 px-6 text-white font-semibold rounded-full outline outline-2 outline-green-500 hover:bg-green-600 transition ease-in-out delay-150">Hire Me</button>
+                  <a href="ShreyCV (1).pdf" > <button class="p-2 px-6 text-white font-semibold rounded-full outline outline-2 outline-yellow-500 hover:bg-yellow-600 transition ease-in-out delay-150">Download CV</button></a>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <img class="md:max-w-[30%] sm:max-w-[40%] max-w-[70%] sm:rounded-sm sm:rounded-br-[5rem] sm:rounded-tl-[5rem] rounded-full sm:outline-none outline outline-[.3rem] outline-green-400/60" src="ChatGPT Image Apr 24, 2025, 09_00_15 PM.png"  alt="My Pic" />
+
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    <div id="about" class="bg-[#181c26] pb-5 md:pb-10">
+        <div class="text-center pt-11 md:mb-8 mx-auto">
+            <h1 class="text-2xl mb-6 tracking-widest font-semibold uppercase">About <span
+                    class="text-[#f1c372]">me</span></h1>
+        </div>
+        <div class="mx-auto text-center md:flex flex-wrap justify-center">
+            <div class="text-center mb-10 md:mb-0 md:text-left px-5 md:w-[45%] leading-relaxed">
+                <h1 class="text-lg text-center md:text-left mb-3">Personal Details</h1>
+                <p>Birthdate : 14-07-2003</span></p>
+                <p>Phone : +91 7715867410</p>
+                <p>Email : shreyashjadhav329@gmail.com</p>
+                <a href="Resume-updated.pdf" download="Resume.pdf" 
+                class="border rounded-full pl-5 my-6 inline-block border-[#f1c372] ">
+                    <button id="moreabout">Download CV
+                        <i class="fa fa-download rounded-full border border-[#f1c372] py-3 px-3 ml-2 bg-[#f1c372]" aria-hidden="true"></i>
+                    </button>
+                </a>
+            </div>
+            <div class="text-center bg- mb-10 md:mb-0 md:text-left px-5 md:w-[45%]">
+                <h1 class="text-lg text-center mb-3">My Interest</h1>
+                <div class="inline-block sm:flex flex-wrap justify-center ">
+                    <p class="text-center mx-2 px-3 py-1 rounded-md bg-[#1c2334] my-2 inline-block"><i class="fa fa-headphones" aria-hidden="true"></i> <br>Music</p>
+                    <p class="text-center mx-2 px-3 py-1 rounded-md bg-[#1c2334] my-2 inline-block"><i class="fa fa-plane" aria-hidden="true"></i> <br>Travel</p>
+                    <p class="text-center mx-1 px-3 py-1 rounded-md bg-[#1c2334] my-2 inline-block"><i class="fa fa-film" aria-hidden="true"></i><br>Cinema</p>
+                    <p class="text-center mx-2 px-3 py-1 rounded-md bg-[#1c2334] my-2 inline-block"><i class="fa fa-book" aria-hidden="true"></i><br>Novel</p>
+                </div>
+            </div>
+            <div class="text-center mb-10 md:mb-0  md:text-center px-0 md:w-[45%]">
+                <h1 class="text-lg text-center my-3 m">Skills</h1>
+                <div class="mx-auto">
+                    <div class="sm:mx-4 md:mx-6 md:text-xs text-center">
+                        <h1 class="capitalize text-sm my-2 text-[#f1c372]">Front-End</h1>
+                        <div class="flex justify-center my-4">
+                            <img src="html.webp" alt="HTML" class="w-12 object-contain mx-3">
+                            <img src="css-3.svg" alt="CSS" class="w-12 object-contain mx-3">
+                            <img src="javascript.svg" alt="Tailwind CSS" class="w-12 object-contain mx-3">
+                        </div>
+                        
+                    </div>
+                    <div class="leading-relaxed md:mx-6 md:text-xs text-center">
+                        <h1 class="capitalize text-sm text-[#f1c372]">Back-End</h1>
+                        <div class="flex justify-center my-3">
+                            <img src="java-4.svg" alt="Core Java" class="w-10  md:w-8 object-contain mx-3">
+                            <img src="javajdbc.png" alt="JDBC" class="w-20  md:w-14  object-contain mx-3">
+                            <img src="hibernate-1.svg" alt="Hibernate" class="w-20  md:w-16  object-contain mx-3">
+                           </div>
+                    </div>
+                    <div class="leading-relaxed sm:mx-4 md:text-xs text-center">
+                        <h1 class="capitalize text-sm text-[#f1c372]">Database</h1>
+                        <div class="flex justify-center my-3">
+                            <img src="postgresql.svg" alt="SQL" class="w-14 md:w-12 object-contain mx-3">
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+            <div class="text-xs mb-10 md:mb-0 text-center md:text-left px-3 md:w-[45%] align-middle justify-center">
+                <h1 class="text-lg text-center my-3">Education</h1>
+                <div class="my-auto justify-center h-[80%] items-center">
+                    <p class="my-5 leading-loose"><span class="border px-2 py-1 rounded-lg mr-2 bg-[#1c2334] text-[#f1c372]">2020-24</span> BE CS-Rajiv Gandhi Institute Of Technology</p>
+                    <p class="my-5 leading-loose"><span class="border px-2 py-1 rounded-lg mr-2  bg-[#1c2334] text-[#f1c372]">2019-20</span> HSC - Vivek Vidyalaya JUNIOR COLLEGE</p>
+                    <p class="my-5 leading-loose"><span class="border px-2 py-1 rounded-lg mr-2 bg-[#1c2334] text-[#f1c372]">2017-18</span>SSC - Nandadeep Vidyalaya</p>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+    <div id="portfolio">
+        <div class="text-center pt-11 mx-auto">
+            <h1 class="text-2xl tracking-widest font-semibold uppercase">Projects</h1>
+        </div>
+        <div class="gallery mx-auto pl-11">
+            <label class="w-[5rem] h-[5rem] md:w-[10rem] md:h-[12rem] sm:w-[6rem] sm:h-[7rem]">
+                <img src="ecomm.png" alt="ecommerce" data-destination="https://ecom1114.netlify.app/">
+            </label>
+            <label class="w-[5rem] h-[5rem] md:w-[10rem] md:h-[12rem] sm:w-[6rem] sm:h-[7rem]">
+                <img src="./resources/tms.jpg" alt="travel system" data-destination="Travel-Management-System">
+            </label>
+            <label class="w-[5rem] h-[5rem] md:w-[10rem] md:h-[12rem] sm:w-[6rem] sm:h-[7rem]">
+                <img src="./resources/lms.jpg" alt="library system" data-destination="Library-Management-System-Core-Java">
+             </label>
+            <!-- <label class="w-[5rem] h-[5rem] md:w-[10rem] md:h-[12rem] sm:w-[6rem] sm:h-[7rem]">
+                <img src="ChatGPT Image Apr 24, 2025, 09_00_15 PM.png" alt="webpage alpha" data-destination="tailwind-alpha">
+            </label>
+            <label class="w-[5rem] h-[5rem] md:w-[10rem] md:h-[12rem] sm:w-[6rem] sm:h-[7rem]">
+                <img src="javascript.svg" alt="webpage lens" data-destination="Lens-Clone">
+            </label> -->
+            <label class="w-[5rem] h-[5rem] md:w-[10rem] md:h-[12rem] sm:w-[6rem] sm:h-[7rem]">
+                <img src="landing.webp" alt="landingpage" data-destination="https://landingdemo14.netlify.app/">
+            </label>
+            <label class="w-[5rem] h-[5rem] md:w-[10rem] md:h-[12rem] sm:w-[6rem] sm:h-[7rem]">
+                <img src="foodmunch.png" alt="shreypetpooja" data-destination="https://shreypetpooja.netlify.app/">
+            </label>
+            <label class="w-[5rem] h-[5rem] md:w-[10rem] md:h-[12rem] sm:w-[6rem] sm:h-[7rem]">
+                <img src="./resources/forty.png" alt="webpage forty" data-destination="Forty">
+            </label>
+            <label class="w-[5rem] h-[5rem] md:w-[10rem] md:h-[12rem] sm:w-[6rem] sm:h-[7rem]">
+                <img src="portfolio.svg" alt="portfolio" data-destination="Portfolio-tailwind">
+            </label>
+          </div>
+          
+    </div>
+    <div id="contact" class="bg-[#181c26] px-4 py-7">
+        <h1 class="text-center text-2xl mb-6 tracking-widest font-semibold uppercase">Contact</h1>
+        <form class="text-center">
+            <input type="text" placeholder="Name" class="mx-1 my-4 px-3 py-1.5 rounded-md text-[#f1c372] bg-[#1c2334] border-none focus:border-none focus:outline-none" required>
+            <input type="email" placeholder="Email" class="mx-1 px-3 my-4 py-1.5 rounded-md text-[#f1c372] bg-[#1c2334] border-none focus:border-none focus:outline-none" required> <br>
+            <textarea name="msg" placeholder="Message" id="" rows="5"  class="px-3 mx-1 w-56 py-1.5 sm:w-[26rem] md:w-96 rounded-md text-[#f1c372] bg-[#1c2334] border-none focus:border-none focus:outline-none" required></textarea>
+            <br>
+            <a href="" class="border rounded-full pl-5 my-6 inline-block border-[#f1c372] ">
+                    <button id="moreabout">Send Message
+                        <i class="fa fa-paper-plane rounded-full border border-[#f1c372] py-3 px-3 ml-2 bg-[#f1c372]" aria-hidden="true"></i>
+                    </button>
+                </a>
+        </form>
+    </div>
+    
+    <script>
+        function openMenu(){
+            document.getElementById("menubar").style.display = "block";
+        }
+        function closeMenu(){
+            document.getElementById("menubar").style.display = "none";
+        }
+
+        var imageElements = document.querySelectorAll("img[data-destination]");
+
+    // Add click event listeners to each image
+    imageElements.forEach(function (image) {
+      image.addEventListener("click", function() {
+        // Get the value of the data-destination attribute
+        let destinationValue = image.getAttribute("data-destination");
+
+        // Construct the destination URL using the value
+        let destinationURL = "" + destinationValue;
+
+        // Redirect the user to the specified URL
+        window.location.href = destinationURL;
+      });
+    });
+
+    let prevScrollpos = window.pageYOffset;
+    let navbar = document.getElementById("navbar");
+    window.onscroll = function() {
+    let currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+        navbar.style.top = "0";
+    } else {
+        navbar.style.top = "-60px";
+    }
+    navbar.style.transition = "top 0.5s ease-in-out";
+    prevScrollpos = currentScrollPos;
+    }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js" referrerpolicy="no-referrer"></script>
+    <script>
+        var typed = new Typed('.typing', {
+        strings: ['', 'FullStack Developer,', 'Frontend Developer,', 'Backend Developer,', 'Java Developer,', 'Core Java Developer,'],
+        typeSpeed: 100,
+        BackSpeed: 60,
+        loop: true
+    })
+    </script>
+</body>
+</html>
